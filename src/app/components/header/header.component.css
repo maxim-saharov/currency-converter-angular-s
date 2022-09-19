@@ -1,0 +1,26 @@
+/**/
+header {
+   background-color: rgba(240, 230, 140, 0.2);
+   color: black;
+   font-weight: 500;
+   font-size: 20px;
+}
+
+.course {
+   margin: auto;
+   padding: 20px 0 20px;
+}
+
+.course__eur {
+   margin-bottom: 10px;
+}
+
+.course__uah {
+   margin-right: 20px;
+   color: #afafaf;
+}
+
+.course__uah--margin {
+   margin-left: 2px;
+}
+
