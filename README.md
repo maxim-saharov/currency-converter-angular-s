@@ -1,7 +1,7 @@
 
 ## Currency Converter Angular
 
-#### Link where publishes this project: [https://maxim-saharov.github.io/currency-converter-angular-s](https://maxim-saharov.github.io/currency-converter-angular-s)
+#### Link where publishes this project: [https://maxim-saharov.com.ua/currency-converter-angular-s](https://maxim-saharov.com.ua/currency-converter-angular-s)
 
 Link where publish other projects: [https://maxim-saharov.com.ua](https://maxim-saharov.com.ua)
 
