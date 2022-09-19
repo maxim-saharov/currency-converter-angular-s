@@ -1,27 +1,48 @@
-# CurrencyConverterAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.2.
+## Currency Converter Angular
 
-## Development server
+#### Link where publishes this project: [https://maxim-saharov.github.io/currency-converter-angular-s](https://maxim-saharov.github.io/currency-converter-angular-s)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Link where publish other projects: [https://maxim-saharov.com.ua](https://maxim-saharov.com.ua)
 
-## Code scaffolding
+***
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+[//]: <> (
+How To deploy React App on Shared Hosting - in package.json
+"homepage": "https://maxim-saharov.github.io/ReactKamasutra",
+npm run build  // yarn build
+deploy
+//
+как что то добавить в маркдаун
+https://habr.com/ru/post/649363/
+тут просто что то пишем и потом копируем сердечки и т.д.
+https://lingojam.com/FancyLetters
+https://gist.github.com/rxaviers/7360908
+https://dillinger.io/
+)
 
-## Build
+### ⛳️ Deployment
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+* clone project
+```shell
+npm install
+```
+```shell
+npm run start
+```
+> You can see project on [http://localhost:4200](http://localhost:4200)  
 
-## Running unit tests
+***
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Tech stack:
 
-## Running end-to-end tests
+* Angular, TypeScript
+* HTML, CSS
+* Only desktop version
+* RxJS, Streams, Pipes
+* api.privatbank.ua
+* Git, GitHub
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### If you like 👍 this project don't forget to turn on a star 💛 for it)
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
