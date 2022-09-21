@@ -5,23 +5,31 @@
       <h1>UAH to foreign currencies</h1>
       <br>
       <h2>from api.privatbank.ua</h2>
-
       <br>
 
-      <div class='course__eur'>USD <span class='course__uah'>UAH</span>{{objCurrencies2['USD'] | number: '.0-2'}}</div>
-      <div class='course__usd'>EUR <span class='course__uah'>UAH</span>{{objCurrencies2['EUR'] | number: '.0-2'}}</div>
+      <div class='course__eur'>
+         USD <span class='course__uah'>UAH </span>
+         {{currService.objCurrencies['USD'] | number: '.0-2'}}
+      </div>
+
+      <div class='course__usd'>
+         EUR <span class='course__uah'>UAH</span>
+         {{currService.objCurrencies['EUR'] | number: '.0-2'}}
+      </div>
       <br>
-      <div *ngIf='isLoading'>
+
+      <div *ngIf='currService.isLoading'>
          Date of receive : <span class='isLoading'>Loading...</span>
       </div>
-      <div *ngIf='!isLoading'>
+
+      <div *ngIf='!currService.isLoading'>
          Date of receive : {{dateOfReceive | date:'dd.MM.yyy HH:mm:ss'}}
       </div>
 
       <div *ngIf='errorMessage'>{{errorMessage}} ></div>
 
-
    </div>
+
 </header>
 
 <!--https://angular.io/api/common/DatePipe-->

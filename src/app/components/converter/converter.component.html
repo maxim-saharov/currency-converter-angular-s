@@ -1,52 +1,61 @@
+<!---->
 <br>
 <div class='wrapper'>
-
    <div class='converter'>
+
       <h3 class='converter__header'>Currency Converter</h3>
 
-      <div class='converter__first-currency'>
+      <form [formGroup]='formGroupConv'>
 
-         <input class='converter__first-input' type='number'
-                [(ngModel)]='firstAmount'
-                (input)="onChange('first-input')"
-         />
+         <div class='converter__first-currency'>
+            <input class='converter__first-input' type='number'
+                   formControlName='firstNumber'
+                   (input)="onChange('firstFieldChange')"
+            >
 
-         <select
-            class='converter__first-select' name='currencies'
-            [(ngModel)]='firstSelected'
-            (change)="onChange('first-select')"
-         >
-            <option
-               [ngValue]='currency'
-               *ngFor='let currency of allCurrenciesArr'
-            >{{currency}}</option>
-         </select>
-      </div>
+            <select
+               class='converter__first-select'
+               formControlName='firstSelect'
+               (change)="onChange('firstFieldChange')"
+            >
+               <option
+                  [ngValue]='currency'
+                  *ngFor='let currency of allCurrenciesArr'
+               >{{currency}}
+               </option>
+            </select>
+         </div>
 
-      <div class='converter__second-currency'>
-         <input class='converter__second-input' type='number'
-                [(ngModel)]='secondAmount'
-                (input)="onChange('second-input')"
-         />
-         <select
-            class='converter__second-select' name='currencies'
-            [(ngModel)]='secondSelected'
-            (change)="onChange('second-select')"
-         >
-            <option
-               [ngValue]='currency'
-               *ngFor='let currency of allCurrenciesArr'
-            >{{currency}}</option>
-         </select>
-         <br> <br> <br>
-         For check:
-         <br><br>
-         <div> 100 UAH / {{ rateUSD | number: '.0-2'}} = {{ (100 / rateUSD) | number: '.0-2' }} USD</div>
-         <br>
-         <div> 100 UAH / {{ rateEUR | number: '.0-2'}} = {{ (100 / rateEUR) | number: '.0-2' }} EUR</div>
-         <br>
-      </div>
+         <div class='converter__second-currency'>
+            <input class='converter__second-input' type='number'
+                   formControlName='secondNumber'
+                   (input)="onChange('secondFieldChange')"
+            >
+
+            <select
+               class='converter__second-select'
+               formControlName='secondSelect'
+               (change)="onChange('secondFieldChange')"
+            >
+               <option
+                  [ngValue]='currency'
+                  *ngFor='let currency of allCurrenciesArr'
+               >{{currency}}
+               </option>
+            </select>
+
+            <br> <br> <br>
+            For check:
+            <br><br>
+            <div> 100 UAH / {{ rateUSD | number: '.0-2'}} = {{ (100 / rateUSD) | number: '.0-2' }} USD</div>
+            <br>
+            <div> 100 UAH / {{ rateEUR | number: '.0-2'}} = {{ (100 / rateEUR) | number: '.0-2' }} EUR</div>
+            <br>
+         </div>
+
+      </form>
+
    </div>
 
-
 </div>
+

@@ -1,56 +1,81 @@
 //
-import {Component, Input} from '@angular/core'
-import {IobjCurrencies} from '../../services/currencies.service'
+import {AfterContentChecked, Component, OnInit} from '@angular/core'
+import {CurrenciesService} from '../../services/currencies.service'
+import {FormGroup, FormControl} from '@angular/forms'
+
 
 @Component({
    selector: 'app-converter',
    templateUrl: './converter.component.html',
    styleUrls: ['./converter.component.css']
 })
-export class ConverterComponent {
 
-   @Input() objCurrencies3: IobjCurrencies = {}
-   @Input() isLoading = true
-   isFistChange = false
+export class ConverterComponent implements OnInit, AfterContentChecked {
 
-   firstAmount: any = 100
-   secondAmount: any = 1
-   firstSelected = 'USD'
-   secondSelected = 'UAH'
+   isAlreadyChanged = false
    allCurrenciesArr: string[] = []
-
    rateUSD = 1
    rateEUR = 1
 
-   ngDoCheck() {
-      if (this.isLoading) {
+   formGroupConv = new FormGroup({
+      firstNumber: new FormControl('100'),
+      firstSelect: new FormControl('USD'),
+      secondNumber: new FormControl('1'),
+      secondSelect: new FormControl('UAH')
+   })
+
+   constructor(public currService: CurrenciesService) {
+   }
+
+   ngOnInit(): void {
+      this.formGroupConv.disable()
+   }
+
+   ngAfterContentChecked() {
+      if (this.currService.isLoading) {
       } else {
-         if (!this.isFistChange) {
-            this.allCurrenciesArr = Object.keys(this.objCurrencies3)
-            this.rateUSD = this.objCurrencies3['USD']
-            this.rateEUR = this.objCurrencies3['EUR']
-            this.onChange('first-input')
-            this.isFistChange = true
+         if (!this.isAlreadyChanged) {
+            this.allCurrenciesArr = Object.keys(this.currService.objCurrencies)
+            this.rateUSD = this.currService.objCurrencies['USD']
+            this.rateEUR = this.currService.objCurrencies['EUR']
+            this.onChange('firstFieldChange')
+            this.formGroupConv.enable()
+            this.isAlreadyChanged = true
          }
       }
    }
 
-   onChange(flag: string) {
 
-      if (flag === 'first-input' || flag === 'first-select') {
-         this.secondAmount = (
-            (this.firstAmount * this.objCurrencies3[this.firstSelected]) /
-            this.objCurrencies3[this.secondSelected]
-         ).toFixed(2)
-      } else if (flag === 'second-input' || flag === 'second-select') {
-         this.firstAmount = (
-            (this.secondAmount * this.objCurrencies3[this.secondSelected]) /
-            this.objCurrencies3[this.firstSelected]
-         ).toFixed(2)
+   onChange(flag: string) {
+      const firstNumber = this.formGroupConv.value.firstNumber
+      const secondNumber = this.formGroupConv.value.secondNumber
+      const firstSelect = this.formGroupConv.value.firstSelect
+      const secondSelect = this.formGroupConv.value.secondSelect
+
+      if (!firstSelect || !secondSelect || !firstNumber || !secondNumber) {
+         console.log('no currency value')
+         return
+      }
+
+      if (flag === 'firstFieldChange') {
+         const secondNumberRes = (+firstNumber *
+            (this.currService.objCurrencies[firstSelect]
+               / this.currService.objCurrencies[secondSelect]))
+            .toFixed(2)
+         this.formGroupConv.patchValue({
+            secondNumber: secondNumberRes
+         })
+
+      } else if (flag === 'secondFieldChange') {
+         const firstNumberRes = (+secondNumber *
+            (this.currService.objCurrencies[secondSelect] /
+               this.currService.objCurrencies[firstSelect]))
+            .toFixed(2)
+         this.formGroupConv.patchValue({
+            firstNumber: firstNumberRes
+         })
       }
    }
-
 }
 
 //this.allCurrenciesArr = ['UAH', 'USD', 'EUR']
-

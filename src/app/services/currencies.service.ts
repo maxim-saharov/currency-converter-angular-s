@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
-import {delay, retry, tap} from 'rxjs'
+import {delay, Observable, retry, tap} from 'rxjs'
 
 
 export interface IdataFromServerPB {
@@ -22,11 +22,12 @@ export interface IobjCurrencies {
 export class CurrenciesService {
 
    objCurrencies: IobjCurrencies = {}
+   isLoading = true
 
    constructor(private http: HttpClient) {
    }
 
-   getCurrenciesPB() {
+   getCurrenciesPB(): Observable<IdataFromServerPB[]> {
       return this.http.get<IdataFromServerPB[]>(
          'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5')
          .pipe(
@@ -40,6 +41,7 @@ export class CurrenciesService {
                      }
                   }
                   this.objCurrencies['UAH'] = 1
+                  this.isLoading = false
                }
             )
          )
