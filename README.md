@@ -8,17 +8,17 @@ Link where publish other projects: [https://maxim-saharov.com.ua](https://maxim-
 ***
 
 [//]: <> (
-How To deploy React App on Shared Hosting - in package.json
-"homepage": "https://maxim-saharov.github.io/ReactKamasutra",
-npm run build  // yarn build
-deploy
+How To deploy Angular App
+https://stackoverflow.com/questions/68453909/remove-warning-option-basehref-is-depracated-use-basehref-option-in-the-browse
 //
-как что то добавить в маркдаун
+how to add something to markdown
 https://habr.com/ru/post/649363/
-тут просто что то пишем и потом копируем сердечки и т.д.
+here we just write something and then copy the hearts, etc.
 https://lingojam.com/FancyLetters
 https://gist.github.com/rxaviers/7360908
 https://dillinger.io/
+ng new angular-test5 --style=scss
+//
 )
 
 ### ⛳️ Deployment
@@ -40,7 +40,7 @@ npm run start
 * HTML, CSS
 * Only desktop version
 * RxJS, Streams, Pipes
-* api.privatbank.ua
+* bank.gov.ua/ua/open-data/api-dev
 * Git, GitHub
 
 ### If you like 👍 this project don't forget to turn on a star 💛 for it)

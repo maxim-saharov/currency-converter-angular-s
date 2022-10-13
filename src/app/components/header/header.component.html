@@ -4,17 +4,17 @@
 
       <h1>UAH to foreign currencies</h1>
       <br>
-      <h2>from api.privatbank.ua</h2>
+      <h2>from bank.gov.ua/ua/open-data/api-dev</h2>
       <br>
 
       <div class='course__eur'>
          USD <span class='course__uah'>UAH </span>
-         {{currService.objCurrencies['USD'] | number: '.0-2'}}
+         {{currService.objCurrencies['USD'] | number: '.0-4'}}
       </div>
 
       <div class='course__usd'>
          EUR <span class='course__uah'>UAH</span>
-         {{currService.objCurrencies['EUR'] | number: '.0-2'}}
+         {{currService.objCurrencies['EUR'] | number: '.0-4'}}
       </div>
       <br>
 

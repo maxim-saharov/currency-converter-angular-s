@@ -4,9 +4,9 @@ import {delay, Observable, retry, tap} from 'rxjs'
 
 
 export interface IdataFromServerPB {
-   ccy: string;
+   cc: string;
    base_ccy: string;
-   buy: string | number;
+   rate: string | number;
    success: string;
 }
 
@@ -29,15 +29,15 @@ export class CurrenciesService {
 
    getCurrenciesPB(): Observable<IdataFromServerPB[]> {
       return this.http.get<IdataFromServerPB[]>(
-         'https://api.privatbank.ua/p24api/pubinfo?json&exchange&coursid=5')
+         'https://bank.gov.ua/NBUStatService/v1/statdirectory/exchange?json')
          .pipe(
             delay(2000),
             retry(1),
             tap(currencies => {
                   for (let i = 0; i < currencies.length; i++) {
                      let item: IdataFromServerPB = currencies[i]
-                     if (item.ccy !== 'BTC') {
-                        this.objCurrencies[item.ccy] = +item.buy
+                     if (item.cc == 'EUR' || item.cc == 'USD') {
+                        this.objCurrencies[item.cc] = +item.rate
                      }
                   }
                   this.objCurrencies['UAH'] = 1
